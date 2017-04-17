@@ -1,6 +1,5 @@
 declare module 'bitcoin-core' {
-    export = Client;
-
+    
     type TypeOptions = {
         headers?: boolean,
         host?: string,
@@ -44,10 +43,11 @@ declare module 'bitcoin-core' {
         method: string,
         parameters: any[]
     }
-    class Client {
+    
+    export default class Client {
         constructor(opts: TypeOptions);
 
-        getInfo(): Promise<[TypeGetInfo, headers]>;
+        getInfo(): Promise<TypeGetInfo>;
         command(cmd: string | TypeCmdParamaters[]): Promise<any>;
         getBlockByHash(hash: string, opts?: { extension: 'json' | 'hex' | 'bin' }, callback?): Promise<any>;
 
